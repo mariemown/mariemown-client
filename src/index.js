@@ -2,16 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
+import { ConnectedRouter } from 'react-router-redux'
 
 import './index.css';
 import App from './App';
 import store from './store'
+import history from './history';
 import registerServiceWorker from './registerServiceWorker'
 
 ReactDOM.render(
   <AppContainer>
     <Provider store={store}>
-      <App />
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
     </Provider>
   </AppContainer>,
   document.getElementById('root')
@@ -23,7 +27,9 @@ if (module.hot) {
     ReactDOM.render(
       <AppContainer>
         <Provider store={store}>
-          <NextApp />
+          <ConnectedRouter history={history}>
+            <NextApp />
+          </ConnectedRouter>
         </Provider>
       </AppContainer>,
       document.getElementById('root')
