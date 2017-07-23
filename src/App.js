@@ -1,18 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { connect } from 'react-redux'
+
+import actionCreators from './action-creators'
 import './App.css';
+
+function Counter({ counter, onIncrementClick, onDecrementClick }) {
+  return (
+    <div>
+      <span>Counter: {counter}</span>
+      <button onClick={onIncrementClick}>+</button>
+      <button onClick={onDecrementClick}>-</button>
+    </div>
+  )
+}
+
+function mapStateToProps(state) {
+  return {
+    counter: state.counter
+  }
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    onIncrementClick: () => dispatch(actionCreators.increment()),
+    onDecrementClick: () => dispatch(actionCreators.decrement()),
+  }
+}
+const CounterContainer = connect(mapStateToProps, mapDispatchToProps)(Counter)
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        Here is App page
+        <CounterContainer/>
       </div>
     );
   }
