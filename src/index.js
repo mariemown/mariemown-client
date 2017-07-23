@@ -4,7 +4,6 @@ import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
 import { ConnectedRouter } from 'react-router-redux'
 
-import './index.css';
 import App from './App';
 import store from './store'
 import history from './history';

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
 
 import CounterContainer from './containers/CounterContainer'
 
-import './App.css';
-
+import 'semantic-ui-css/semantic.min.css'
 
 class App extends Component {
   render() {
@@ -12,7 +12,7 @@ class App extends Component {
       <div className="App">
         Here is App page!
         <p>
-          <Link to="/counter">Go to counter</Link>
+          <Button as={Link} to="/counter">Go to counter</Button>
         </p>
         <Route path="/counter" component={CounterContainer}/>
       </div>
